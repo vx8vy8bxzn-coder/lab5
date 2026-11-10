@@ -56,6 +56,7 @@ class BookTableWindow(QMainWindow):
 
         title = QLabel("Список книг")
         title.setAlignment(Qt.AlignCenter)
+        title.setMinimumHeight(44)
         title.setStyleSheet("font-size: 20px; font-weight: bold; margin: 8px;")
         layout.addWidget(title)
 
@@ -74,7 +75,11 @@ class BookTableWindow(QMainWindow):
                     item.setTextAlignment(Qt.AlignCenter)
                 self.table.setItem(row_index, column_index, item)
 
-        self.table.horizontalHeader().setSectionResizeMode(QHeaderView.Stretch)
+        header = self.table.horizontalHeader()
+        header.setSectionResizeMode(0, QHeaderView.Stretch)
+        header.setSectionResizeMode(1, QHeaderView.Stretch)
+        header.setSectionResizeMode(2, QHeaderView.ResizeToContents)
+        header.setSectionResizeMode(3, QHeaderView.ResizeToContents)
         self.table.setSortingEnabled(True)
         layout.addWidget(self.table)
 
